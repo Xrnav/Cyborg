@@ -1,9 +1,8 @@
 FROM ryoishin/cyborg:debian
-
-RUN set -ex \
-    && git clone -b master https://github.com/TeamXrnav/Cyborg /root/cyborgbot \
-    && chmod 777 /root/cyborgbot
-
-WORKDIR /root/cyborgbot/
-
-CMD ["python3", "-m", "cyborgbot"]
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y ffmpeg git
+RUN pip install -r https://raw.githubusercontent.com/TeamXrnav/Cyborg/master/requirements.txt
+COPY . .
+COPY ./cyborg.sh .
+ADD ./cyborg.sh .
+CMD ["bash","cyborg.sh"]

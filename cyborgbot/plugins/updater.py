@@ -48,7 +48,7 @@ async def gen_chlog(repo, diff):
 
 async def print_changelogs(event, ac_br, changelog):
     changelog_str = (
-        f"🔥 **New UPDATE available for [{ac_br}]:\n\n📑 CHANGELOG:**\n`{changelog}`"
+        f"✨ **New UPDATE available for [{ac_br}]:\n\n📑 CHANGELOG:**\n`{changelog}`"
     )
     if len(changelog_str) > 4096:
         await eor(event, "`Changelog is too big, view the file to see it.`")
@@ -154,11 +154,11 @@ async def upstream(event):
     if conf == "" and not force_update:
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
-        return await event.respond(f"🌚 Do `{hl}update build` to update your **Hêllẞø†** !!")
+        return await event.respond(f"🌚 Do `{hl}update build` to update your **Cyborg-UserBot** !!")
 
     if force_update:
         await event.edit(
-            "`Force-Updating Hêllẞø†. Please wait...`"
+            "`Check New Updates Cyborg-UserBot. Please wait...`"
         )
     if conf == "now":
         await event.edit("`Update In Progress! Please Wait....`")
@@ -219,7 +219,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 @cyborg_cmd(pattern="update build$")
 async def upstream(event):
     event = await eor(event, "`Hard-Update In Progress... \nPlease wait until docker build is finished...`")
-    off_repo = "https://github.com/TeamXrnav/Cyborg"
+    off_repo = "https://github.com/TeamXrnav/By-pass"
     os.chdir("/app")
     git_cyborg = f"rm -rf .git"
     try:
@@ -259,7 +259,7 @@ CmdHelp("update").add_command(
 ).add_command(
   "update now", None, "Soft-Update Your Cyborg. Basically if you restart dyno it will go back to previous deploy."
 ).add_command(
-  "update build", None, "Hard-Update Your Hêllẞø†. This won't take you back to your previous deploy. This will be triggered even if there is no changelog."
+  "update build", None, "Hard-Update Your Userbot. This won't take you back to your previous deploy. This will be triggered even if there is no changelog."
 ).add_info(
   "Cyborg Updater."
 ).add_warning(
